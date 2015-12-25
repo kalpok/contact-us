@@ -1,0 +1,57 @@
+<?php
+
+use yii\helpers\Html;
+use yii\widgets\Pjax;
+use yii\grid\GridView;
+use themes\admin360\widgets\Panel;
+use themes\admin360\widgets\ActionButtons;
+/* @var $this yii\web\View */
+/* @var $searchModel modules\contactus\backend\models\ContactusSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+
+$this->title = 'تماس با ما';
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<div class="contactus-manage-index">
+    <?= ActionButtons::widget([
+        'buttons' => [
+            'department' => [
+                'label' => 'مدیریت دپارتمان‌ها',
+                'url' => ['department/index'],
+                'icon' => 'tasks',
+                'type' => 'info',
+            ],
+        ],
+    ]); ?>
+    <?php Panel::begin([
+        'title' => Html::encode($this->title)
+    ]) ?>
+
+        <?php Pjax::begin([
+            'id' => 'contactus-gridviewpjax',
+            'enablePushState' => false,
+        ]); ?>
+            <?= GridView::widget([
+                'dataProvider' => $dataProvider,
+                'filterModel' => $searchModel,
+                'columns' => [
+                    ['class' => 'yii\grid\SerialColumn'],
+                    ['class' => 'kalpok\grid\IDColumn'],
+                    ['class' => 'kalpok\grid\LanguageColumn'],
+                    'name',
+                    'email',
+                    'phone',
+                    'subject',
+                    [
+                        'attribute' => 'createdAt',
+                        'format' =>'date',
+                        'filter' =>false
+                    ],
+                    ['class' => 'yii\grid\ActionColumn',
+                    'template' => '{view} {delete}'],
+                ],
+            ]); ?>
+        <?php Pjax::end(); ?>
+    <?php Panel::end() ?>
+
+</div>
