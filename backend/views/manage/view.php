@@ -9,7 +9,7 @@ use themes\admin360\widgets\ActionButtons;
 /* @var $model modules\post\backend\models\Category */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'پیغام‌ها', 'url' => ['/contactus/manage/index']];
+$this->params['breadcrumbs'][] = ['label' => 'پیام‌ها', 'url' => ['/contactus/manage/index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="contactus-view">
@@ -17,13 +17,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'modelID' => $model->id,
         'buttons' => [
             'delete' => ['label' => 'حذف'],
-            'index' => ['label' => 'پیغام‌ها'],
+            'index' => ['label' => 'پیام‌ها'],
         ],
     ]); ?>
     <div class="row">
         <div class="col-md-5">
             <?php Panel::begin([
-                'title' => 'اطلاعات پیغام',
+                'title' => 'اطلاعات پیام',
             ]) ?>
                 <?= DetailView::widget([
                     'model' => $model,

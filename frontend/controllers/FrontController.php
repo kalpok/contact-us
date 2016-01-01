@@ -19,7 +19,7 @@ class FrontController extends Controller
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
             \Yii::$app->session->addFlash(
                 'success',
-                'پیغام شما با موفقیت ارسال شد.'
+                'پیام شما با موفقیت ارسال شد.'
             );
         }
         return $this->render('index', [

@@ -52,8 +52,8 @@ class Contactus extends \yii\db\ActiveRecord
             'phone' => 'تلفن',
             'subject' => 'موضوع',
             'departmentId' => 'دپارتمان',
-            'message' => 'پیغام',
-            'createdAt' => 'تاریخ ارسال پیغام',
+            'message' => 'پیام',
+            'createdAt' => 'تاریخ ارسال پیام',
             'updatedAt' => 'آخرین بروزرسانی',
         ];
     }

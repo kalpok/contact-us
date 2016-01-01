@@ -6,8 +6,13 @@ return [
         'icon' => 'file',
         'items' => [
             [
-                'label' => 'پیغام‌ها',
+                'label' => 'پیام‌ها',
                 'url' => ['/contactus/manage/index'],
+                'visible' => Yii::$app->user->canAccessAny(['contactus.manage'])
+            ],
+            [
+                'label' => 'مدیریت دپارتمان‌ها',
+                'url' => ['/contactus/department/index'],
                 'visible' => Yii::$app->user->canAccessAny(['contactus.manage'])
             ],
         ]

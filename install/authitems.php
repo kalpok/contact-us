@@ -1,9 +1,9 @@
 <?php
 return [
     'permissions' => [
-        'manage' => 'مدیریت پیغام‌ها',
-        'update'=>'ویرایش یک پیغام',
-        'delete'=>'حذف پیغامis',
+        'manage' => 'مدیریت پیام‌ها',
+        'update'=>'ویرایش یک پیام',
+        'delete'=>'حذف پیام',
     ],
     'roles' => [
 

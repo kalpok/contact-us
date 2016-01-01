@@ -7,7 +7,7 @@ use themes\admin360\widgets\ActionButtons;
 /* @var $model modules\post\backend\models\Category */
 
 $this->title = 'ویرایش دپارتمان';
-$this->params['breadcrumbs'][] = ['label' => 'پیغام‌ها', 'url' => ['/contactus/manage/index']];
+$this->params['breadcrumbs'][] = ['label' => 'پیام‌ها', 'url' => ['/contactus/manage/index']];
 $this->params['breadcrumbs'][] = ['label' => 'دپارتمان‌ها', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'ویرایش';

@@ -71,7 +71,7 @@ class Contactus extends \yii\db\ActiveRecord
             'subject' => \Yii::t('cms', 'Subject'),
             'departmentId' => \Yii::t('cms', 'Department'),
             'message' => \Yii::t('cms', 'Message'),
-            'createdAt' => 'تاریخ ارسال پیغام',
+            'createdAt' => 'تاریخ ارسال پیام',
             'updatedAt' => 'آخرین بروزرسانی',
         ];
     }
