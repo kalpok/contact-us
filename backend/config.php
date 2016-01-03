@@ -3,7 +3,7 @@ return [
     'title' => 'ماژول تماس با ما',
     'menu' => [
         'label' => 'تماس با ما',
-        'icon' => 'file',
+        'icon' => 'envelope-o',
         'items' => [
             [
                 'label' => 'پیام‌ها',
