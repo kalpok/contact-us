@@ -6,12 +6,12 @@ return [
         'icon' => 'envelope-o',
         'items' => [
             [
-                'label' => 'پیام‌ها',
+                'label' => 'لیست پیام‌ها',
                 'url' => ['/contactus/manage/index'],
                 'visible' => Yii::$app->user->canAccessAny(['contactus.manage'])
             ],
             [
-                'label' => 'مدیریت دپارتمان‌ها',
+                'label' => 'لیست دپارتمان‌ها',
                 'url' => ['/contactus/department/index'],
                 'visible' => Yii::$app->user->canAccessAny(['contactus.manage'])
             ],

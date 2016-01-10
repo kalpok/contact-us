@@ -10,13 +10,14 @@ use themes\admin360\widgets\ActionButtons;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'دپارتمان‌ها';
+$this->params['breadcrumbs'][] = ['label'=>'تماس با ما', 'url'=>['/contactus']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="contactus-department-index">
 
     <?= ActionButtons::widget([
         'buttons' => [
-            'create' => ['label' => 'افزودن دپارتمان'],
+            'create' => ['label' => 'دپارتمان جدید'],
         ],
     ]); ?>
 

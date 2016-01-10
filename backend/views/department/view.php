@@ -9,7 +9,7 @@ use themes\admin360\widgets\ActionButtons;
 /* @var $model modules\post\backend\models\Category */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'پیام‌ها', 'url' => ['/contactus/manage/index']];
+$this->params['breadcrumbs'][] = ['label' => 'تماس با ما', 'url' => ['/contactus/manage/index']];
 $this->params['breadcrumbs'][] = ['label' => 'دپارتمان‌ها', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -17,9 +17,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= ActionButtons::widget([
         'modelID' => $model->id,
         'buttons' => [
-            'create' => ['label' => 'افزودن دپارتمان'],
             'update' => ['label' => 'ویرایش'],
             'delete' => ['label' => 'حذف'],
+            'create' => ['label' => 'دپارتمان جدید'],
             'index' => ['label' => 'دپارتمان‌ها'],
         ],
     ]); ?>
