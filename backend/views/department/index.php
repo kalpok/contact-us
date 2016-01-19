@@ -36,6 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ['class' => 'kalpok\grid\IDColumn'],
                     ['class' => 'kalpok\grid\LanguageColumn'],
                     'title',
+                    'email',
                     [
                         'attribute' => 'createdAt',
                         'format' =>'date',

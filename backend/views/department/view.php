@@ -33,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'attributes' => [
                         'id:farsiNumber',
                         'title',
+                        'email',
                         [
                             'attribute' => 'language',
                             'visible' => Yii::$app->i18n->isMultiLanguage(),

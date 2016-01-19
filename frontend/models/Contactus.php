@@ -83,4 +83,24 @@ class Contactus extends \yii\db\ActiveRecord
     {
         return $this->hasOne(ContactusDepartment::className(), ['id' => 'departmentId']);
     }
+
+    public function sendToDepartment()
+    {
+        try {
+            $mailer = Yii::$app->mailer;
+            $mailer->setViewPath('@modules/contactus/frontend/views/front');
+            return $mailer->compose('mail', [
+                'text' => $this->message,
+                'email' => $this->email,
+                'name' => $this->name,
+                'subject' => $this->subject,
+                'phone' => $this->phone
+            ])
+                ->setTo($this->department->email)
+                ->setSubject($this->subject)
+                ->send();
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
 }

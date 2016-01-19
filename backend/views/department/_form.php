@@ -29,18 +29,28 @@ $backLink = $model->isNewRecord ? ['index'] : ['view', 'id' => $model->id];
                             ]
                         )
                 ?>
+                <?=
+                    $form->field($model, 'email')
+                        ->textInput(
+                            [
+                                'maxlength' => 255,
+                                'class' => 'form-control input-large'
+                            ]
+                        )
+                ?>
                 <?php if (Yii::$app->i18n->isMultiLanguage()): ?>
+
                         <?php if ($model->isNewRecord): ?>
                             <?= $form->field($model, 'language')->widget(
                                 LanguageSelect::className(),
                                 ['options' => ['class' => 'form-control input-large']]
-                            )->label(false); ?>
+                            )->label('زبان'); ?>
                         <?php else: ?>
                             <?= $form->field($model, 'language')->textInput([
                                 'class' => 'form-control input-large',
                                 'disabled' => true,
                                 'value' => Yii::$app->formatter->asLanguage($model->language)
-                            ])->label(false) ?>
+                            ])->label('زبان') ?>
                         <?php endif ?>
                 <?php endif ?>
             <?php Panel::end() ?>

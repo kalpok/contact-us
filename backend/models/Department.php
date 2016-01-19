@@ -32,7 +32,8 @@ class Department extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title'], 'required'],
+            [['title', 'email'], 'required'],
+            [['email'], 'email'],
             [['language', 'title'], 'string', 'max' => 255],
             [['title'], FarsiCharactersValidator::className()]
         ];
@@ -56,6 +57,7 @@ class Department extends \yii\db\ActiveRecord
         return [
             'id' => 'شناسه',
             'language' => 'زبان',
+            'email' => 'ایمیل',
             'title' => 'عنوان',
             'createdAt' => 'تاریخ ساخت',
             'updatedAt' => 'آخرین بروزرسانی',

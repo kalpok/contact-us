@@ -21,6 +21,12 @@ class FrontController extends Controller
                 'success',
                 'پیام شما با موفقیت ارسال شد.'
             );
+            $model->sendToDepartment();
+        } else {
+            \Yii::$app->session->addFlash(
+                'error',
+                'مشکلی در فرایند ارسال پیام به وجود آمده. لطفا مجددا تلاش کنید.'
+            );
         }
         return $this->render('index', [
             'model' => $model,
