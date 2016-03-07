@@ -17,11 +17,11 @@ class FrontController extends Controller
         }
         $model->loadDefaultValues();
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
+            $model->sendToDepartment();
             \Yii::$app->session->addFlash(
                 'success',
                 'پیام شما با موفقیت ارسال شد.'
             );
-            $model->sendToDepartment();
         } else {
             \Yii::$app->session->addFlash(
                 'error',
