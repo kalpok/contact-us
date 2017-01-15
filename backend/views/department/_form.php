@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use themes\admin360\widgets\Panel;
 use themes\admin360\widgets\Button;
-use kalpok\i18n\widgets\LanguageSelect;
+use extensions\i18n\widgets\LanguageSelect;
 
 /* @var $this yii\web\View */
 /* @var $model modules\post\backend\models\Category */
