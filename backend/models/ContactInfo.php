@@ -1,7 +1,7 @@
 <?php
 namespace modules\contactus\backend\models;
 
-use kalpok\validators\FarsiCharactersValidator;
+use extensions\i18n\validators\FarsiCharactersValidator;
 
 class ContactInfo extends \yii\db\ActiveRecord
 {

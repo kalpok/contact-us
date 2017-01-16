@@ -4,18 +4,8 @@ namespace modules\contactus\backend\models;
 
 use Yii;
 use kalpok\behaviors\TimestampBehavior;
-use kalpok\validators\FarsiCharactersValidator;
-/**
- * This is the model class for table "contactus_department".
- *
- * @property integer $id
- * @property string $language
- * @property string $title
- * @property integer $createdAt
- * @property integer $updatedAt
- *
- * @property Contactus[] $contactuses
- */
+use extensions\i18n\validators\FarsiCharactersValidator;
+
 class Department extends \yii\db\ActiveRecord
 {
     /**
