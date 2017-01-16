@@ -3,7 +3,6 @@
 namespace modules\contactus\frontend\models;
 
 use Yii;
-use kalpok\behaviors\TimestampBehavior;
 use extensions\i18n\validators\FarsiCharactersValidator;
 
 class Contactus extends \yii\db\ActiveRecord
@@ -36,7 +35,7 @@ class Contactus extends \yii\db\ActiveRecord
         return array_merge(
             parent::behaviors(),
             [
-                TimestampBehavior::className(),
+                'core\behaviors\TimestampBehavior'
             ]
         );
     }
@@ -48,14 +47,14 @@ class Contactus extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => \Yii::t('cms', 'ID'),
+            'id' => Yii::t('cms', 'ID'),
             'language' => 'زبان',
-            'name' => \Yii::t('cms', 'Full Name'),
-            'email' => \Yii::t('cms', 'Email'),
-            'phone' => \Yii::t('cms', 'Phone'),
-            'subject' => \Yii::t('cms', 'Subject'),
-            'departmentId' => \Yii::t('cms', 'Department'),
-            'message' => \Yii::t('cms', 'Message'),
+            'name' => Yii::t('cms', 'Full Name'),
+            'email' => Yii::t('cms', 'Email'),
+            'phone' => Yii::t('cms', 'Phone'),
+            'subject' => Yii::t('cms', 'Subject'),
+            'departmentId' => Yii::t('cms', 'Department'),
+            'message' => Yii::t('cms', 'Message'),
             'createdAt' => 'تاریخ ارسال پیام',
             'updatedAt' => 'آخرین بروزرسانی',
         ];
@@ -72,7 +71,7 @@ class Contactus extends \yii\db\ActiveRecord
     public function sendToDepartment()
     {
         try {
-            $mailer = \Yii::$app->mailer;
+            $mailer = Yii::$app->mailer;
             $mailer->compose(
                 '@modules/contactus/frontend/views/front/mail', [
                 'text' => $this->message,

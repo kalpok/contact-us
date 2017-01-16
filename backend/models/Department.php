@@ -2,8 +2,6 @@
 
 namespace modules\contactus\backend\models;
 
-use Yii;
-use kalpok\behaviors\TimestampBehavior;
 use extensions\i18n\validators\FarsiCharactersValidator;
 
 class Department extends \yii\db\ActiveRecord
@@ -34,7 +32,7 @@ class Department extends \yii\db\ActiveRecord
         return array_merge(
             parent::behaviors(),
             [
-                TimestampBehavior::className(),
+                'core\behaviors\TimestampBehavior',
             ]
         );
     }
