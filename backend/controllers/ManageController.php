@@ -1,8 +1,8 @@
 <?php
 namespace modules\contactus\backend\controllers;
 
-use kalpok\controllers\AdminController;
 use yii\filters\AccessControl;
+use core\controllers\AdminController;
 use modules\contactus\backend\models\Contactus;
 use modules\contactus\backend\models\ContactusSearch;
 

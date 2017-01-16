@@ -5,9 +5,6 @@ use yii\widgets\Pjax;
 use yii\grid\GridView;
 use themes\admin360\widgets\Panel;
 use themes\admin360\widgets\ActionButtons;
-/* @var $this yii\web\View */
-/* @var $searchModel modules\contactus\backend\models\DepartmentSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'دپارتمان‌ها';
 $this->params['breadcrumbs'][] = ['label'=>'تماس با ما', 'url'=>['/contactus']];
@@ -33,8 +30,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filterModel' => $searchModel,
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
-                    ['class' => 'kalpok\grid\IDColumn'],
-                    ['class' => 'kalpok\grid\LanguageColumn'],
+                    ['class' => 'core\grid\IDColumn'],
+                    ['class' => 'core\grid\LanguageColumn'],
                     'title',
                     'email',
                     [
