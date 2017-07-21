@@ -22,8 +22,7 @@ class DepartmentController extends AdminController
                     'rules' => [
                         [
                             'allow' => true,
-                            'actions' => ['index', 'update', 'delete', 'create', 'view'],
-                            'roles' => ['contacus.manage'],
+                            'roles' => ['contacus.departments'],
                         ],
                     ],
                 ],
