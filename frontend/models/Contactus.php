@@ -73,13 +73,14 @@ class Contactus extends \yii\db\ActiveRecord
         try {
             $mailer = Yii::$app->mailer;
             $mailer->compose(
-                '@modules/contactus/frontend/views/front/mail', [
-                'text' => $this->message,
-                'email' => $this->email,
-                'name' => $this->name,
-                'subject' => $this->subject,
-                'phone' => $this->phone
-            ]
+                '@modules/contactus/frontend/views/front/mail',
+                [
+                    'text' => $this->message,
+                    'email' => $this->email,
+                    'name' => $this->name,
+                    'subject' => $this->subject,
+                    'phone' => $this->phone
+                ]
             )->setTo($this->department->email)
             ->setSubject($this->subject)
             ->send();

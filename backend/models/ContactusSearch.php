@@ -18,8 +18,8 @@ class ContactusSearch extends Contactus
     public function rules()
     {
         return [
-            [['id', 'departmentId', 'createdAt', 'updatedAt'], 'integer'],
-            [['language', 'name', 'email', 'phone', 'subject', 'message'], 'safe'],
+            [['departmentId'], 'integer'],
+            [['language', 'name', 'email', 'phone', 'subject'], 'safe'],
         ];
     }
 
