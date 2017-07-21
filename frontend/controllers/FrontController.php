@@ -22,7 +22,7 @@ class FrontController extends \yii\web\Controller
             } else {
                 \Yii::$app->session->addFlash(
                     'error',
-                    'مشکلی در فرایند ارسال پیام به وجود آمده. لطفا مجددا تلاش کنید.'
+                    'مشکلی در فرایند ارسال پیام به وجود آمده. لطفا دوباره تلاش کنید.'
                 );
             }
         }

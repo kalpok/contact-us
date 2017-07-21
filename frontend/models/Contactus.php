@@ -7,9 +7,6 @@ use extensions\i18n\validators\FarsiCharactersValidator;
 
 class Contactus extends \yii\db\ActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
     public static function tableName()
     {
         return 'contactus';
@@ -25,12 +22,12 @@ class Contactus extends \yii\db\ActiveRecord
             [['email'], 'email'],
             [['departmentId'], 'integer'],
             [['message'], 'string'],
-            [['language', 'name', 'email', 'phone', 'subject'], 'string', 'max' => 255],
+            [['name', 'email', 'phone', 'subject'], 'string', 'max' => 255],
             [['name', 'subject', 'message'], FarsiCharactersValidator::className()]
         ];
     }
 
-     public function behaviors()
+    public function behaviors()
     {
         return array_merge(
             parent::behaviors(),
@@ -40,23 +37,18 @@ class Contactus extends \yii\db\ActiveRecord
         );
     }
 
-
     /**
      * @inheritdoc
      */
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('cms', 'ID'),
-            'language' => 'زبان',
             'name' => Yii::t('cms', 'Full Name'),
             'email' => Yii::t('cms', 'Email'),
             'phone' => Yii::t('cms', 'Phone'),
             'subject' => Yii::t('cms', 'Subject'),
             'departmentId' => Yii::t('cms', 'Department'),
             'message' => Yii::t('cms', 'Message'),
-            'createdAt' => 'تاریخ ارسال پیام',
-            'updatedAt' => 'آخرین بروزرسانی',
         ];
     }
 
