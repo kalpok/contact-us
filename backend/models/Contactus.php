@@ -4,22 +4,6 @@ namespace modules\contactus\backend\models;
 
 use Yii;
 
-/**
- * This is the model class for table "contactus".
- *
- * @property integer $id
- * @property string $language
- * @property string $name
- * @property string $email
- * @property string $phone
- * @property string $subject
- * @property integer $departmentId
- * @property string $message
- * @property integer $createdAt
- * @property integer $updatedAt
- *
- * @property ContactusDepartment $department
- */
 class Contactus extends \yii\db\ActiveRecord
 {
     /**
@@ -28,15 +12,6 @@ class Contactus extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'contactus';
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-        ];
     }
 
     /**
@@ -63,6 +38,6 @@ class Contactus extends \yii\db\ActiveRecord
      */
     public function getDepartment()
     {
-        return $this->hasOne(ContactusDepartment::className(), ['id' => 'departmentId']);
+        return $this->hasOne(Department::className(), ['id' => 'departmentId']);
     }
 }

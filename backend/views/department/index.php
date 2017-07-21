@@ -29,16 +29,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
                 'columns' => [
-                    ['class' => 'yii\grid\SerialColumn'],
                     ['class' => 'core\grid\IDColumn'],
                     ['class' => 'core\grid\LanguageColumn'],
                     'title',
                     'email',
-                    [
-                        'attribute' => 'createdAt',
-                        'format' =>'date',
-                        'filter' =>false
-                    ],
+                    'createdAt:datetime',
                     ['class' => 'yii\grid\ActionColumn'],
                 ],
             ]); ?>

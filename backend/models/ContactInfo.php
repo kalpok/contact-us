@@ -13,12 +13,14 @@ class ContactInfo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['fax', 'openHour','description','address','phone','title','postalCode','postBox'], 'safe'],
+            [
+                ['fax', 'openHour','description','address','phone','title','postalCode'],
+                'safe'
+            ],
             ['email', 'email'],
-            [['address','title'], 'trim'],
+            [['address', 'title'], 'trim'],
             [['title', 'description', 'motto'], FarsiCharactersValidator::className()],
             ['title', 'default', 'value' => 'تماس با ما'],
-
         ];
     }
 

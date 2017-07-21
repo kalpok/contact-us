@@ -2,6 +2,7 @@
 namespace modules\contactus\backend\controllers;
 
 use yii\filters\AccessControl;
+use yii\web\NotFoundHttpException;
 use core\controllers\AdminController;
 use modules\contactus\backend\models\Contactus;
 use modules\contactus\backend\models\ContactusSearch;
@@ -18,7 +19,6 @@ class ManageController extends AdminController
                     'rules' => [
                         [
                             'allow' => true,
-                            'actions' => ['index', 'delete', 'view'],
                             'roles' => ['contacus.manage'],
                         ],
                     ],
@@ -32,5 +32,15 @@ class ManageController extends AdminController
         $this->modelClass = Contactus::className();
         $this->searchClass = ContactusSearch::className();
         parent::init();
+    }
+
+    public function actionCreate()
+    {
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionUpdate($id)
+    {
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

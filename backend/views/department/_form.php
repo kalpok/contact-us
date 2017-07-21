@@ -1,14 +1,11 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap\ActiveForm;
 use themes\admin360\widgets\Panel;
 use themes\admin360\widgets\Button;
 use extensions\i18n\widgets\LanguageSelect;
 
-/* @var $this yii\web\View */
-/* @var $model modules\post\backend\models\Category */
-/* @var $form yii\widgets\ActiveForm */
 $backLink = $model->isNewRecord ? ['index'] : ['view', 'id' => $model->id];
 ?>
 
@@ -18,8 +15,8 @@ $backLink = $model->isNewRecord ? ['index'] : ['view', 'id' => $model->id];
     <div class="row">
         <div class="col-md-8">
             <?php Panel::begin([
-                        'title' => 'اطلاعات دپارتمان'
-                    ]) ?>
+                'title' => 'اطلاعات دپارتمان'
+            ]) ?>
                 <?=
                     $form->field($model, 'title')
                         ->textInput(
@@ -37,15 +34,16 @@ $backLink = $model->isNewRecord ? ['index'] : ['view', 'id' => $model->id];
                                 'class' => 'form-control input-large'
                             ]
                         )
+                        ->hint('پیام های کاربران به این ایمیل هم ارسال می‌شود.');
                 ?>
-                <?php if (Yii::$app->i18n->isMultiLanguage()): ?>
+                <?php if (Yii::$app->i18n->isMultiLanguage()) : ?>
 
-                        <?php if ($model->isNewRecord): ?>
+                        <?php if ($model->isNewRecord) : ?>
                             <?= $form->field($model, 'language')->widget(
                                 LanguageSelect::className(),
                                 ['options' => ['class' => 'form-control input-large']]
                             )->label('زبان'); ?>
-                        <?php else: ?>
+                        <?php else : ?>
                             <?= $form->field($model, 'language')->textInput([
                                 'class' => 'form-control input-large',
                                 'disabled' => true,

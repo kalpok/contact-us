@@ -50,11 +50,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         'class' => 'form-control input-medium',
                         'style'=>'direction:ltr'
                     ]); ?>
-                    <?= $form->field($model, 'postBox')->textInput([
-                        'maxlength' => 255,
-                        'class' => 'form-control input-medium',
-                        'style'=>'direction:ltr'
-                    ]); ?>
                     <?= $form->field($model, 'email')->textInput([
                         'maxlength' => 255,
                         'class' => 'form-control input-medium',
