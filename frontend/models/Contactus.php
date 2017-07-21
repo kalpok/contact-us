@@ -3,6 +3,7 @@
 namespace modules\contactus\frontend\models;
 
 use Yii;
+use modules\contactus\frontend\Module;
 use extensions\i18n\validators\FarsiCharactersValidator;
 
 class Contactus extends \yii\db\ActiveRecord
@@ -43,12 +44,12 @@ class Contactus extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'name' => Yii::t('cms', 'Full Name'),
-            'email' => Yii::t('cms', 'Email'),
-            'phone' => Yii::t('cms', 'Phone'),
-            'subject' => Yii::t('cms', 'Subject'),
-            'departmentId' => Yii::t('cms', 'Department'),
-            'message' => Yii::t('cms', 'Message'),
+            'name' => Module::t('Full Name'),
+            'email' => Module::t('Email'),
+            'phone' => Module::t('Phone'),
+            'subject' => Module::t('Subject'),
+            'departmentId' => Module::t('Department'),
+            'message' => Module::t('Message'),
         ];
     }
 
