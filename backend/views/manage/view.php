@@ -5,30 +5,36 @@ use yii\widgets\DetailView;
 use themes\admin360\widgets\Panel;
 use themes\admin360\widgets\ActionButtons;
 
-/* @var $this yii\web\View */
-/* @var $model modules\post\backend\models\Category */
-
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'پیغام‌ها', 'url' => ['/contactus/manage/index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'تماس با ما | '. $model->subject;
+$this->params['breadcrumbs'][] =
+    ['label' => 'پیام‌ها', 'url' => ['/contactus/manage/index']];
+$this->params['breadcrumbs'][] = $model->subject;
 ?>
 <div class="contactus-view">
     <?= ActionButtons::widget([
         'modelID' => $model->id,
         'buttons' => [
-            'delete' => ['label' => 'حذف'],
-            'index' => ['label' => 'پیغام‌ها'],
+            'delete' => ['label' => 'حذف پیام'],
+            'index' => ['label' => 'لیست پیام‌ها'],
         ],
     ]); ?>
     <div class="row">
+        <div class="col-md-7">
+            <?php Panel::begin([
+                'title' => 'متن پیام',
+            ]) ?>
+                <div class="well">
+                    <?= $model->message ?>
+                </div>
+            <?php Panel::end() ?>
+        </div>
         <div class="col-md-5">
             <?php Panel::begin([
-                'title' => 'اطلاعات پیغام',
+                'title' => 'جزئیات پیام',
             ]) ?>
                 <?= DetailView::widget([
                     'model' => $model,
                     'attributes' => [
-                        'id:farsiNumber',
                         [
                             'attribute' => 'language',
                             'visible' => Yii::$app->i18n->isMultiLanguage(),
@@ -38,10 +44,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         'email',
                         'phone',
                         'subject',
-                        'departmentId',
-                        'message',
-                        'createdAt:date',
-                        'updatedAt:date',
+                        [
+                            'attribute' => 'department.title',
+                            'label' => 'دپارتمان'
+                        ],
+                        'createdAt:datetime',
                     ],
                 ]) ?>
             <?php Panel::end() ?>

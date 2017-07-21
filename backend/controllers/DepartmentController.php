@@ -2,8 +2,8 @@
 
 namespace modules\contactus\backend\controllers;
 
-use kalpok\controllers\AdminController;
 use yii\filters\AccessControl;
+use core\controllers\AdminController;
 use modules\contactus\backend\models\Department;
 use modules\contactus\backend\models\DepartmentSearch;
 
@@ -22,8 +22,7 @@ class DepartmentController extends AdminController
                     'rules' => [
                         [
                             'allow' => true,
-                            'actions' => ['index', 'update', 'delete', 'create', 'view'],
-                            'roles' => ['contacus.manage'],
+                            'roles' => ['contacus.departments'],
                         ],
                     ],
                 ],

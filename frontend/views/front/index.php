@@ -1,11 +1,8 @@
 <?php
-
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 use modules\contactus\frontend\models\Department;
-/* @var $this yii\web\View */
-/* @var $model modules\post\backend\models\Post */
 
 $this->title = 'تماس با ما';
 $this->params['breadcrumbs'][] = $this->title;
@@ -14,7 +11,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php $form = ActiveForm::begin(); ?>
     <div class="row">
         <div class="col-md-8">
-            <?= Html::activeHiddenInput($model, 'language', ['value'=>Yii::$app->language]) ?>
+            <?= Html::activeHiddenInput(
+                $model,
+                'language',
+                ['value'=>Yii::$app->language]
+            ) ?>
             <?=
                 $form->field($model, 'name')
                     ->textInput(
@@ -51,13 +52,17 @@ $this->params['breadcrumbs'][] = $this->title;
                         ]
                     )
             ?>
-            <?= $form->field($model,'departmentId')->dropDownList(ArrayHelper::map(Department::find()->all(), 'id', 'title'), ['prompt' => 'انتخاب کنید ...']) ?>
+            <?php if (Department::find()->exists()) : ?>
+                <?= $form->field($model, 'departmentId')->dropDownList(
+                    ArrayHelper::map(Department::find()->all(), 'id', 'title'),
+                    ['prompt' => 'انتخاب کنید ...']
+                ) ?>
+            <?php endif ?>
             <?= $form->field($model, 'message')->textarea(['rows' => 6]) ?>
 
-            
             <?=
                 Html::submitButton(
-                    '<i class="fa fa-save"></i> ذخیره',
+                    'ارسال',
                     [
                         'class' => 'btn btn-lg btn-success'
                     ]

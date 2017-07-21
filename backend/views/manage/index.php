@@ -5,9 +5,6 @@ use yii\widgets\Pjax;
 use yii\grid\GridView;
 use themes\admin360\widgets\Panel;
 use themes\admin360\widgets\ActionButtons;
-/* @var $this yii\web\View */
-/* @var $searchModel modules\contactus\backend\models\ContactusSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'تماس با ما';
 $this->params['breadcrumbs'][] = $this->title;
@@ -35,18 +32,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
                 'columns' => [
-                    ['class' => 'yii\grid\SerialColumn'],
-                    ['class' => 'kalpok\grid\IDColumn'],
-                    ['class' => 'kalpok\grid\LanguageColumn'],
+                    ['class' => 'core\grid\IDColumn'],
+                    ['class' => 'core\grid\LanguageColumn'],
                     'name',
                     'email',
                     'phone',
                     'subject',
-                    [
-                        'attribute' => 'createdAt',
-                        'format' =>'date',
-                        'filter' =>false
-                    ],
+                    'createdAt:datetime',
                     ['class' => 'yii\grid\ActionColumn',
                     'template' => '{view} {delete}'],
                 ],

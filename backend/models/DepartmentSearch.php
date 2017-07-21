@@ -18,7 +18,6 @@ class DepartmentSearch extends Department
     public function rules()
     {
         return [
-            [['id', 'createdAt', 'updatedAt'], 'integer'],
             [['language', 'title'], 'safe'],
         ];
     }

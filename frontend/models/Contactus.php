@@ -3,29 +3,11 @@
 namespace modules\contactus\frontend\models;
 
 use Yii;
-use kalpok\behaviors\TimestampBehavior;
-use kalpok\validators\FarsiCharactersValidator;
-/**
- * This is the model class for table "contactus".
- *
- * @property integer $id
- * @property string $language
- * @property string $name
- * @property string $email
- * @property string $phone
- * @property string $subject
- * @property integer $departmentId
- * @property string $message
- * @property integer $createdAt
- * @property integer $updatedAt
- *
- * @property ContactusDepartment $department
- */
+use modules\contactus\frontend\Module;
+use extensions\i18n\validators\FarsiCharactersValidator;
+
 class Contactus extends \yii\db\ActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
     public static function tableName()
     {
         return 'contactus';
@@ -41,21 +23,20 @@ class Contactus extends \yii\db\ActiveRecord
             [['email'], 'email'],
             [['departmentId'], 'integer'],
             [['message'], 'string'],
-            [['language', 'name', 'email', 'phone', 'subject'], 'string', 'max' => 255],
+            [['name', 'email', 'phone', 'subject'], 'string', 'max' => 255],
             [['name', 'subject', 'message'], FarsiCharactersValidator::className()]
         ];
     }
 
-     public function behaviors()
+    public function behaviors()
     {
         return array_merge(
             parent::behaviors(),
             [
-                TimestampBehavior::className(),
+                'core\behaviors\TimestampBehavior'
             ]
         );
     }
-
 
     /**
      * @inheritdoc
@@ -63,16 +44,12 @@ class Contactus extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => \Yii::t('cms', 'ID'),
-            'language' => 'زبان',
-            'name' => \Yii::t('cms', 'Full Name'),
-            'email' => \Yii::t('cms', 'Email'),
-            'phone' => \Yii::t('cms', 'Phone'),
-            'subject' => \Yii::t('cms', 'Subject'),
-            'departmentId' => \Yii::t('cms', 'Department'),
-            'message' => \Yii::t('cms', 'Message'),
-            'createdAt' => 'تاریخ ارسال پیغام',
-            'updatedAt' => 'آخرین بروزرسانی',
+            'name' => Module::t('Full Name'),
+            'email' => Module::t('Email'),
+            'phone' => Module::t('Phone'),
+            'subject' => Module::t('Subject'),
+            'departmentId' => Module::t('Department'),
+            'message' => Module::t('Message'),
         ];
     }
 
@@ -81,6 +58,27 @@ class Contactus extends \yii\db\ActiveRecord
      */
     public function getDepartment()
     {
-        return $this->hasOne(ContactusDepartment::className(), ['id' => 'departmentId']);
+        return $this->hasOne(Department::className(), ['id' => 'departmentId']);
+    }
+
+    public function sendToDepartment()
+    {
+        try {
+            $mailer = Yii::$app->mailer;
+            $mailer->compose(
+                '@modules/contactus/frontend/views/front/mail',
+                [
+                    'text' => $this->message,
+                    'email' => $this->email,
+                    'name' => $this->name,
+                    'subject' => $this->subject,
+                    'phone' => $this->phone
+                ]
+            )->setTo($this->department->email)
+            ->setSubject($this->subject)
+            ->send();
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 }
