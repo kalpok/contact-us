@@ -22,7 +22,7 @@ class Contactus extends \yii\db\ActiveRecord
             [['name', 'email', 'subject', 'message'], 'required'],
             [['email'], 'email'],
             [['departmentId'], 'integer'],
-            [['message'], 'string'],
+            [['message', 'language'], 'string'],
             [['name', 'email', 'phone', 'subject'], 'string', 'max' => 255],
             [['name', 'subject', 'message'], FarsiCharactersValidator::className()]
         ];
