@@ -18,7 +18,7 @@ class FrontController extends \yii\web\Controller
                     'success',
                     'پیام شما با موفقیت ارسال شد.'
                 );
-                $this->refresh();
+                return $this->refresh();
             } else {
                 \Yii::$app->session->addFlash(
                     'error',
