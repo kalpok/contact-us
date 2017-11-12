@@ -3,6 +3,7 @@
 namespace modules\contactus\frontend\controllers;
 
 use modules\contactus\frontend\models\Contactus;
+use modules\contactus\frontend\models\Department;
 
 class FrontController extends \yii\web\Controller
 {
@@ -11,6 +12,9 @@ class FrontController extends \yii\web\Controller
     public function actionIndex()
     {
         $model = new Contactus;
+        if (Department::find()->count() > 0) {
+            $model->scenario = 'withDepartment';
+        }
         if ($model->load(\Yii::$app->request->post())) {
             if ($model->save()) {
                 $model->sendToDepartment();
