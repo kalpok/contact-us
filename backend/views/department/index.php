@@ -15,6 +15,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= ActionButtons::widget([
         'buttons' => [
             'create' => ['label' => 'دپارتمان جدید'],
+            'contactus' => [
+                'label' => 'لیست پیام ها',
+                'url' => ['manage/index'],
+                'icon' => 'envelope',
+                'type' => 'info',
+            ],
         ],
     ]); ?>
 

@@ -38,6 +38,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     'email',
                     'phone',
                     'subject',
+                    [
+                        'attribute' => 'department.title',
+                        'label' => 'دپارتمان‌'
+                    ],
                     'createdAt:datetime',
                     ['class' => 'yii\grid\ActionColumn',
                     'template' => '{view} {delete}'],
