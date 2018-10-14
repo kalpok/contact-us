@@ -2,9 +2,9 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use themes\admin360\widgets\Panel;
-use themes\admin360\widgets\Button;
-use themes\admin360\widgets\editor\Editor;
+use theme\widgets\Panel;
+use theme\widgets\Button;
+use theme\widgets\editor\Editor;
 
 $this->title = 'تماس با ما';
 $this->params['breadcrumbs'][] = $this->title;

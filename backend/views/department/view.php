@@ -2,8 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use themes\admin360\widgets\Panel;
-use themes\admin360\widgets\ActionButtons;
+use theme\widgets\Panel;
+use theme\widgets\ActionButtons;
 
 /* @var $this yii\web\View */
 /* @var $model modules\post\backend\models\Category */
