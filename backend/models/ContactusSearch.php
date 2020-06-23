@@ -37,6 +37,11 @@ class ContactusSearch extends Contactus
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'createdAt' => SORT_DESC,
+                ],
+            ],                        
         ]);
 
         $this->load($params);
