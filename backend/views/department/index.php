@@ -3,8 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\Pjax;
 use yii\grid\GridView;
-use themes\admin360\widgets\Panel;
-use themes\admin360\widgets\ActionButtons;
+use theme\widgets\Panel;
+use theme\widgets\ActionButtons;
 
 $this->title = 'دپارتمان‌ها';
 $this->params['breadcrumbs'][] = ['label'=>'تماس با ما', 'url'=>['/contactus']];
@@ -15,6 +15,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= ActionButtons::widget([
         'buttons' => [
             'create' => ['label' => 'دپارتمان جدید'],
+            'contactus' => [
+                'label' => 'لیست پیام ها',
+                'url' => ['manage/index'],
+                'icon' => 'envelope',
+                'type' => 'info',
+            ],
         ],
     ]); ?>
 

@@ -22,7 +22,8 @@ class Contactus extends \yii\db\ActiveRecord
             [['name', 'email', 'subject', 'message'], 'required'],
             [['email'], 'email'],
             [['departmentId'], 'integer'],
-            [['message'], 'string'],
+            [['departmentId'], 'required', 'on' => 'withDepartment'],
+            [['message', 'language'], 'string'],
             [['name', 'email', 'phone', 'subject'], 'string', 'max' => 255],
             [['name', 'subject', 'message'], FarsiCharactersValidator::className()]
         ];
@@ -63,6 +64,9 @@ class Contactus extends \yii\db\ActiveRecord
 
     public function sendToDepartment()
     {
+        if ($this->department == null) {
+            return;
+        }
         try {
             $mailer = Yii::$app->mailer;
             $mailer->compose(

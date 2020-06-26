@@ -3,8 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\Pjax;
 use yii\grid\GridView;
-use themes\admin360\widgets\Panel;
-use themes\admin360\widgets\ActionButtons;
+use theme\widgets\Panel;
+use theme\widgets\ActionButtons;
 
 $this->title = 'تماس با ما';
 $this->params['breadcrumbs'][] = $this->title;
@@ -38,6 +38,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     'email',
                     'phone',
                     'subject',
+                    [
+                        'attribute' => 'department.title',
+                        'label' => 'دپارتمان‌'
+                    ],
                     'createdAt:datetime',
                     ['class' => 'yii\grid\ActionColumn',
                     'template' => '{view} {delete}'],

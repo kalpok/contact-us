@@ -12,39 +12,36 @@ use modules\contactus\backend\models\Contactus;
  */
 class ContactusSearch extends Contactus
 {
-    /**
-     * @inheritdoc
-     */
+    public function attributes()
+    {
+        return array_merge(parent::attributes(), ['department.title']);
+    }
+
     public function rules()
     {
         return [
             [['departmentId'], 'integer'],
-            [['language', 'name', 'email', 'phone', 'subject'], 'safe'],
+            [['language', 'name', 'email', 'phone', 'subject', 'department.title'], 'safe'],
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function scenarios()
     {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
 
-    /**
-     * Creates data provider instance with search query applied
-     *
-     * @param array $params
-     *
-     * @return ActiveDataProvider
-     */
     public function search($params)
     {
         $query = Contactus::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'createdAt' => SORT_DESC,
+                ],
+            ],                        
         ]);
 
         $this->load($params);
@@ -68,6 +65,10 @@ class ContactusSearch extends Contactus
             ->andFilterWhere(['like', 'phone', $this->phone])
             ->andFilterWhere(['like', 'subject', $this->subject])
             ->andFilterWhere(['like', 'message', $this->message]);
+        $query->joinWith('department AS department');
+        $query->andFilterWhere(
+            ['like', 'department.title', $this->getAttribute('department.title')]
+        );
 
         return $dataProvider;
     }
