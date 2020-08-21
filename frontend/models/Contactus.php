@@ -8,6 +8,9 @@ use extensions\i18n\validators\FarsiCharactersValidator;
 
 class Contactus extends \yii\db\ActiveRecord
 {
+    public $captcha;
+
+
     public static function tableName()
     {
         return 'contactus';
@@ -18,6 +21,7 @@ class Contactus extends \yii\db\ActiveRecord
      */
     public function rules()
     {
+        $module = \modules\contactus\frontend\Module::getInstance();
         return [
             [['name', 'email', 'subject', 'message'], 'required'],
             [['email'], 'email'],
@@ -25,7 +29,15 @@ class Contactus extends \yii\db\ActiveRecord
             [['departmentId'], 'required', 'on' => 'withDepartment'],
             [['message', 'language'], 'string'],
             [['name', 'email', 'phone', 'subject'], 'string', 'max' => 255],
-            [['name', 'subject', 'message'], FarsiCharactersValidator::className()]
+            [['name', 'subject', 'message'], FarsiCharactersValidator::className()],
+            [
+                'captcha',
+                'captcha',
+                'captchaAction' => 'contactus/front/captcha',
+                'when' => function ($model) use ($module) {
+                    return $module && $module->useCaptcha;
+                }
+            ]
         ];
     }
 

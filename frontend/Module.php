@@ -6,6 +6,7 @@ use Yii;
 class Module extends \yii\base\Module
 {
     public $urlRules;
+    public $useCaptcha = true;
     public $controllerNamespace = 'modules\contactus\frontend\controllers';
 
     public function init()
